@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Brylle's 1st Lap — POV Disposable Camera 🏁</title>
+  <meta name="description" content="Welcome to Baby Brylle's 1st Birthday Racing Party POV Disposable Camera! Snap candid moments from your point of view." />
+  <meta name="theme-color" content="#0D0E12" />
+  <!-- Google Fonts: Racing Display + Clean UI + Telemetry Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,600;0,700;1,700&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Lightweight QR Code Generator -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <!-- Conditional Popover Polyfill for older browsers per persistent-toast-notifications guide -->
+  <script type="module">
+    if (!("popover" in HTMLElement.prototype)) {
+      import("https://unpkg.com/@oddbird/popover-polyfill@latest/dist/popover.min.js");
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- =========================================================
+       VIEW 1: INITIAL VIEW (QR CODE LANDING FACE)
+       ========================================================= -->
+  <main id="view-landing" class="view active" aria-label="1st Birthday QR Code Card">
+    <div class="ambient-glow"></div>
+    <div class="checkered-ribbon top-ribbon" aria-hidden="true"></div>
+
+    <div class="landing-scroll-container">
+      <article class="birthday-card">
+        <!-- Racing Telemetry Header -->
+        <header class="card-telemetry-bar">
+          <span class="telemetry-tag"><span class="live-dot"></span> PIT LANE PASS</span>
+          <span class="telemetry-lap">LAP 01 // EST. 2025–2026</span>
+        </header>
+
+        <!-- Hero Driver Section featuring Baby Brylle's Photo -->
+        <div class="driver-hero">
+          <div class="driver-photo-frame">
+            <img src="baby_brylle.jpg" alt="Baby Brylle in his red racing suit and race car" class="driver-photo" fetchpriority="high" />
+            <div class="driver-number-badge">#1</div>
+            <div class="pit-stop-pill">🏁 ROOKIE OF THE YEAR</div>
+          </div>
+
+          <div class="driver-title-block">
+            <p class="race-eyebrow">FAST ONE GRAND PRIX</p>
+            <h1 class="race-headline">BRYLLE'S <span class="accent-red">1ST LAP</span></h1>
+            <p class="race-subtitle">POV DISPOSABLE CAMERA</p>
+          </div>
+        </div>
+
+        <!-- Ticket Perforation Divider -->
+        <div class="ticket-divider" aria-hidden="true">
+          <span class="notch notch-left"></span>
+          <span class="dashed-line"></span>
+          <span class="notch notch-right"></span>
+        </div>
+
+        <!-- Dynamic QR Code Section -->
+        <section class="qr-pit-section" aria-label="Scan QR Code to Open Guest Camera">
+          <div class="qr-frame-outer">
+            <div class="qr-corner tl"></div>
+            <div class="qr-corner tr"></div>
+            <div class="qr-corner bl"></div>
+            <div class="qr-corner br"></div>
+            <div id="qrcode" class="qr-box" role="img" aria-label="QR Code pointing to Guest Camera view"></div>
+          </div>
+
+          <div class="qr-caption">
+            <span class="scan-badge">📱 SCAN WITH PHONE CAMERA</span>
+            <p class="qr-helper-text">Help us capture candid moments from your point of view! No app or sign-in needed.</p>
+            <p id="qr-url-preview" class="qr-url-code" title="Guest URL"></p>
+          </div>
+        </section>
+
+        <!-- Action Buttons -->
+        <footer class="card-actions">
+          <button id="btn-start-guest" type="button" class="btn-racing-primary">
+            <span class="btn-flag">🏁</span>
+            <span class="btn-text">Start / Preview Guest App</span>
+            <span class="btn-arrow">→</span>
+          </button>
+          <button id="btn-copy-link" type="button" class="btn-racing-secondary">
+            <span>🔗 Copy Guest Camera Link</span>
+          </button>
+        </footer>
+      </article>
+    </div>
+
+    <div class="checkered-ribbon bottom-ribbon" aria-hidden="true"></div>
+  </main>
+
+  <!-- =========================================================
+       VIEW 2: STEP-BY-STEP IMAGE CAROUSEL (?view=guest)
+       ========================================================= -->
+  <section id="view-carousel" class="view" aria-label="Onboarding Briefing Carousel" hidden>
+    <div class="ambient-glow"></div>
+    <header class="carousel-topbar">
+      <button id="btn-back-to-qr" type="button" class="icon-pill-btn" aria-label="Back to QR Card">
+        <span>← QR Pass</span>
+      </button>
+      <div class="topbar-brand">
+        <span class="brand-flag">🏎️</span>
+        <span>DRIVER BRIEFING</span>
+      </div>
+      <button id="btn-skip-carousel" type="button" class="text-link-btn">Skip</button>
+    </header>
+
+    <!-- Swipeable / Tappable 3-Slide Track -->
+    <div class="carousel-viewport">
+      <div id="carousel-track" class="carousel-track" tabindex="0" aria-live="polite">
+        
+        <!-- SLIDE 1: Welcome -->
+        <article class="carousel-slide is-active" data-slide="0" aria-label="Step 1 of 3">
+          <div class="slide-card">
+            <div class="slide-badge-row">
+              <span class="step-badge">STEP 01 / 03</span>
+              <span class="step-tag">WELCOME TO THE PITS</span>
+            </div>
+
+            <div class="slide-illustration-box">
+              <div class="hero-photo-showcase">
+                <img src="baby_brylle.jpg" alt="Baby Brylle smiling in his race car" class="slide-baby-img" />
+                <div class="showcase-overlay-badge">
+                  <span>🎈 BRYLLE'S 1ST BIRTHDAY</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="slide-copy">
+              <h2 class="slide-title">Start Your Engines! 🏁</h2>
+              <p class="slide-description">
+                Welcome to my son's <strong>1st Birthday POV camera!</strong> Help us capture candid moments from your point of view.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- SLIDE 2: How to use -->
+        <article class="carousel-slide" data-slide="1" aria-label="Step 2 of 3">
+          <div class="slide-card">
+            <div class="slide-badge-row">
+              <span class="step-badge">STEP 02 / 03</span>
+              <span class="step-tag">POINT &amp; SHOOT</span>
+            </div>
+
+            <div class="slide-illustration-box">
+              <!-- Racing Disposable Camera SVG Illustration -->
+              <svg class="slide-svg" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Disposable Camera Illustration">
+                <!-- Ambient Race Track Lines -->
+                <path d="M20 185H300" stroke="#2A2E39" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 10"/>
+                <!-- Camera Body -->
+                <rect x="55" y="45" width="210" height="128" rx="22" fill="#181B22" stroke="#E10600" stroke-width="4"/>
+                <!-- Checkered Racing Stripe on Camera -->
+                <g opacity="0.9">
+                  <rect x="75" y="49" width="16" height="16" fill="#FFFFFF"/>
+                  <rect x="91" y="49" width="16" height="16" fill="#111318"/>
+                  <rect x="75" y="65" width="16" height="16" fill="#111318"/>
+                  <rect x="91" y="65" width="16" height="16" fill="#FFFFFF"/>
+                  <rect x="75" y="81" width="16" height="16" fill="#FFFFFF"/>
+                  <rect x="91" y="81" width="16" height="16" fill="#111318"/>
+                  <rect x="75" y="97" width="16" height="16" fill="#111318"/>
+                  <rect x="91" y="97" width="16" height="16" fill="#FFFFFF"/>
+                  <rect x="75" y="113" width="16" height="16" fill="#FFFFFF"/>
+                  <rect x="91" y="113" width="16" height="16" fill="#111318"/>
+                  <rect x="75" y="129" width="16" height="16" fill="#111318"/>
+                  <rect x="91" y="129" width="16" height="16" fill="#FFFFFF"/>
+                  <rect x="75" y="145" width="16" height="16" fill="#FFFFFF"/>
+                  <rect x="91" y="145" width="16" height="16" fill="#111318"/>
+                </g>
+                <!-- Shutter Button Top Right -->
+                <rect x="208" y="30" width="38" height="15" rx="6" fill="#FFD000" stroke="#111318" stroke-width="3"/>
+                <!-- Flash Unit -->
+                <rect x="202" y="62" width="44" height="24" rx="6" fill="#FFFDF9" stroke="#FFD000" stroke-width="3"/>
+                <path d="M224 58L218 74H226L220 88" stroke="#E10600" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Main Camera Lens (Tachometer Ring) -->
+                <circle cx="158" cy="112" r="42" fill="#0D0E12" stroke="#FFD000" stroke-width="4"/>
+                <circle cx="158" cy="112" r="31" fill="#151922" stroke="#E10600" stroke-width="3" stroke-dasharray="14 6"/>
+                <circle cx="158" cy="112" r="16" fill="#232938"/>
+                <circle cx="151" cy="105" r="5" fill="#FFFFFF" opacity="0.8"/>
+                <!-- Flash Sparkle Rays -->
+                <path d="M258 46L272 34M266 66L284 62M248 32L254 16" stroke="#FFD000" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Badge pill -->
+                <rect x="114" y="182" width="92" height="24" rx="12" fill="#E10600"/>
+                <text x="160" y="198" text-anchor="middle" fill="#FFFFFF" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="12">TAP &amp; SNAP</text>
+              </svg>
+            </div>
+
+            <div class="slide-copy">
+              <h2 class="slide-title">How to Use 📸</h2>
+              <p class="slide-description">
+                Tap <strong>"Open Camera"</strong> on the final slide to access the built-in web camera and snap photos directly from your phone browser.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- SLIDE 3: What happens next -->
+        <article class="carousel-slide" data-slide="2" aria-label="Step 3 of 3">
+          <div class="slide-card">
+            <div class="slide-badge-row">
+              <span class="step-badge">STEP 03 / 03</span>
+              <span class="step-tag">AUTO-SAVE VAULT</span>
+            </div>
+
+            <div class="slide-illustration-box">
+              <!-- Instant Cloud Upload to Birthday Vault SVG Illustration -->
+              <svg class="slide-svg" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Auto-Save to Google Drive Birthday Album Illustration">
+                <!-- Cloud Vault Shape -->
+                <path d="M98 136H226C247 136 262 121 262 101C262 83 249 68 231 66C224 41 201 24 174 24C143 24 117 47 114 77C95 79 80 95 80 114C80 127 88 136 98 136Z" fill="#181B22" stroke="#FFD000" stroke-width="4"/>
+                <!-- Polaroid Photo Frames Flying Into Vault -->
+                <g transform="rotate(-10 110 148)">
+                  <rect x="82" y="112" width="56" height="66" rx="6" fill="#FFFDF9" stroke="#111318" stroke-width="2.5"/>
+                  <rect x="89" y="119" width="42" height="40" rx="3" fill="#E10600"/>
+                  <circle cx="110" cy="139" r="9" fill="#FFD000"/>
+                </g>
+                <g transform="rotate(8 212 148)">
+                  <rect x="184" y="112" width="56" height="66" rx="6" fill="#FFFDF9" stroke="#111318" stroke-width="2.5"/>
+                  <rect x="191" y="119" width="42" height="40" rx="3" fill="#00E676"/>
+                  <path d="M203 140L210 147L223 132" stroke="#0D0E12" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <!-- Center Upload Speed Circle -->
+                <circle cx="164" cy="92" r="28" fill="#E10600" stroke="#FFFDF9" stroke-width="3"/>
+                <path d="M164 106V78M164 78L153 89M164 78L175 89" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Zero Sign-in Banner -->
+                <rect x="78" y="184" width="168" height="24" rx="12" fill="#00E676"/>
+                <text x="162" y="200" text-anchor="middle" fill="#09120D" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="11.5">INSTANT GOOGLE DRIVE SYNC</text>
+              </svg>
+            </div>
+
+            <div class="slide-copy">
+              <h2 class="slide-title">What Happens Next 🚀</h2>
+              <p class="slide-description">
+                Every photo snapped is <strong>automatically uploaded</strong> straight into our private Google Drive birthday album—no sign-in or app download needed!
+              </p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- Carousel Controls: Pagination Dots + Next / Open Camera Button -->
+    <footer class="carousel-footer">
+      <div class="pagination-dots" role="tablist" aria-label="Carousel Slide Pagination">
+        <button type="button" class="dot active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+        <button type="button" class="dot" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+        <button type="button" class="dot" data-index="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+      </div>
+
+      <div class="carousel-nav-row">
+        <button id="btn-prev-slide" type="button" class="btn-carousel-secondary" disabled aria-label="Previous Slide">
+          ← Back
+        </button>
+        <button id="btn-next-slide" type="button" class="btn-racing-primary">
+          <span id="next-slide-label">Next Lap</span>
+          <span id="next-slide-icon">→</span>
+        </button>
+      </div>
+    </footer>
+  </section>
+
+  <!-- =========================================================
+       VIEW 3: FULL-SCREEN DISPOSABLE CAMERA & AUTO-SAVE VAULT
+       ========================================================= -->
+  <section id="view-camera" class="view" aria-label="Disposable POV Camera" hidden>
+    <!-- Top Disposable Camera HUD -->
+    <header class="camera-hud-top">
+      <button id="btn-camera-info" type="button" class="hud-pill-btn" aria-label="View Instructions">
+        <span>🏁 Guide</span>
+      </button>
+
+      <div class="hud-title-badge">
+        <span class="rec-dot"></span>
+        <span>BRYLLE'S POV CAM</span>
+      </div>
+
+      <!-- Snapped Photo Counter (Tachometer/Odometer Style) -->
+      <div class="odometer-counter" aria-live="polite" title="Snapped Photo Counter">
+        <span class="odometer-label">SHOTS</span>
+        <span id="shot-counter" class="odometer-digits">00</span>
+      </div>
+    </header>
+
+    <!-- Main Camera Viewfinder Stage -->
+    <div class="viewfinder-wrapper">
+      <video id="camera-video" class="camera-video mirrored" autoplay playsinline muted></video>
+      
+      <!-- Hidden HTML5 Canvas for Base64 JPEG 0.8 Capture -->
+      <canvas id="capture-canvas" hidden></canvas>
+
+      <!-- Disposable Camera Viewfinder Crosshairs & Telemetry Overlay -->
+      <div class="viewfinder-overlay" aria-hidden="true">
+        <div class="vf-corner tl"></div>
+        <div class="vf-corner tr"></div>
+        <div class="vf-corner bl"></div>
+        <div class="vf-corner br"></div>
+        <div class="vf-center-crosshair">+</div>
+        <div class="vf-bottom-stamp">
+          <span>🏎️ BRYLLE'S 1ST LAP</span>
+          <span id="vf-facing-label">REAR CAM</span>
+        </div>
+      </div>
+
+      <!-- Xenon Shutter Flash Overlay -->
+      <div id="shutter-flash" class="shutter-flash" aria-hidden="true"></div>
+
+      <!-- Camera Permission / Fallback State (if getUserMedia is denied or unavailable) -->
+      <div id="camera-fallback" class="camera-fallback" hidden>
+        <div class="fallback-card">
+          <img src="baby_brylle.jpg" alt="Baby Brylle" class="fallback-avatar" />
+          <h3 class="fallback-title">Pit Stop: Camera Access Needed 📸</h3>
+          <p id="fallback-message" class="fallback-desc">
+            Please allow browser camera access, or tap below to snap a photo directly using your phone's native camera!
+          </p>
+          <div class="fallback-actions">
+            <button id="btn-retry-camera" type="button" class="btn-racing-primary">
+              🔄 Retry Live Camera
+            </button>
+            <label for="native-camera-input" class="btn-native-upload">
+              📷 Snap with Native Phone Camera
+            </label>
+            <input id="native-camera-input" type="file" accept="image/*" capture="environment" hidden />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Disposable Camera Controls Deck -->
+    <footer class="camera-hud-bottom">
+      <!-- Left: Last Snapped Thumbnail Preview -->
+      <div class="hud-side-slot">
+        <button id="btn-thumb-preview" type="button" class="thumb-preview-btn" aria-label="View Recent Snapped Photos" disabled>
+          <img id="thumb-img" src="baby_brylle.jpg" alt="Last snapped photo preview" class="thumb-img" />
+          <span id="thumb-badge" class="thumb-count-badge" hidden>0</span>
+        </button>
+        <span class="slot-caption">ROLL</span>
+      </div>
+
+      <!-- Center: Tactile Racing Start / Shutter Button -->
+      <div class="shutter-slot">
+        <button id="btn-shutter" type="button" class="shutter-btn" aria-label="Snap Photo">
+          <span class="shutter-outer-ring">
+            <span class="shutter-inner-core">
+              <span class="shutter-label">SNAP</span>
+            </span>
+          </span>
+        </button>
+      </div>
+
+      <!-- Right: Front / Back Camera Flip Button -->
+      <div class="hud-side-slot">
+        <button id="btn-flip-camera" type="button" class="flip-cam-btn" aria-label="Flip Front/Back Camera">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4"/>
+            <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"/>
+          </svg>
+        </button>
+        <span class="slot-caption">FLIP</span>
+      </div>
+    </footer>
+  </section>
+
+  <!-- =========================================================
+       SESSION PHOTO ROLL DRAWER (THUMBNAIL PREVIEW MODAL)
+       ========================================================= -->
+  <div id="gallery-modal" class="gallery-modal" role="dialog" aria-modal="true" aria-labelledby="gallery-title" hidden>
+    <div class="gallery-Sheet">
+      <header class="gallery-header">
+        <div>
+          <h2 id="gallery-title" class="gallery-title">🏁 YOUR RACE ROLL</h2>
+          <p class="gallery-subtitle">All snaps auto-upload to Brylle's Birthday Vault</p>
+        </div>
+        <button id="btn-close-gallery" type="button" class="gallery-close-btn" aria-label="Close Preview">✕</button>
+      </header>
+      <div id="gallery-grid" class="gallery-grid"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       NON-BLOCKING TOAST NOTIFICATION STACK (Popover="manual")
+       ========================================================= -->
+  <div id="toast-rack" class="toast-rack" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
